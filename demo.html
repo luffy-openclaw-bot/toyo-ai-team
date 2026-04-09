@@ -7,335 +7,258 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
-            background: linear-gradient(135deg, #0F0F23 0%, #1a1a3e 100%);
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #1a3a5c 0%, #2c5f8d 100%);
         }
-        .agent-card {
-            transition: all 0.3s ease;
+        .card {
+            transition: all 0.3s;
         }
-        .agent-card:hover {
+        .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,122,255,0.3);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
-        .task-flow {
-            position: relative;
-        }
-        .task-flow::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(180deg, #007AFF, #5856D6);
-        }
-        .task-item {
-            position: relative;
-            z-index: 1;
-        }
-        .task-dot {
-            position: absolute;
-            right: -10px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 20px;
-            height: 20px;
-            background: #007AFF;
+        .agent-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #c41230, #ff6b6b);
             border-radius: 50%;
-            border: 4px solid #1a1a3e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            font-weight: bold;
         }
-        .pulse {
-            animation: pulse-animation 2s infinite;
-        }
-        @keyframes pulse-animation {
-            0% { box-shadow: 0 0 0 0 rgba(0,122,255,0.7); }
-            70% { box-shadow: 0 0 0 20px rgba(0,122,255,0); }
-            100% { box-shadow: 0 0 0 0 rgba(0,122,255,0); }
+        .report-section {
+            background: rgba(255,255,255,0.95);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 1.5rem 0;
         }
     </style>
 </head>
-<body class="text-white min-h-screen">
-    <!-- Header -->
-    <header class="py-12 px-4">
-        <div class="max-w-6xl mx-auto text-center">
-            <h1 class="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+<body class="min-h-screen py-8">
+    <div class="container mx-auto px-4 max-w-6xl">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-5xl font-bold text-white mb-4">
                 🤖 Toyo Security AI Team
             </h1>
-            <p class="text-xl text-gray-400 mb-2">
-                使用 CrewAI 創建嘅 AI 員工團隊
+            <p class="text-xl text-blue-100">
+                CrewAI Demo - 5 AI Agents 協作生成月度保安報告
             </p>
-            <p class="text-gray-500">
-                為 Toyo Security 提供自動化保安管理服務
-            </p>
+            <div class="mt-4 flex justify-center gap-4">
+                <span class="bg-white/20 px-4 py-2 rounded-full text-white text-sm">
+                    Powered by LiteLLM + Ollama Cloud
+                </span>
+                <span class="bg-white/20 px-4 py-2 rounded-full text-white text-sm">
+                    Model: gemma4:31b-cloud
+                </span>
+            </div>
         </div>
-    </header>
 
-    <!-- Team Members -->
-    <section class="py-12 px-4">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-8">👥 團隊成員</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- CEO -->
-                <div class="agent-card bg-gradient-to-br from-blue-900 to-purple-900 rounded-2xl p-6 border border-blue-500/30">
-                    <div class="text-4xl mb-3">👔</div>
-                    <h3 class="text-xl font-bold mb-2">CEO</h3>
-                    <p class="text-sm text-gray-400 mb-3">Chief Executive Officer</p>
-                    <div class="text-sm text-gray-300 space-y-2">
-                        <p>✓ 制定公司戰略決策</p>
-                        <p>✓ 優化保安服務質量</p>
-                        <p>✓ 20 年保安行業經驗</p>
-                    </div>
+        <!-- AI Agents -->
+        <div class="grid md:grid-cols-5 gap-4 mb-8">
+            <!-- CEO -->
+            <div class="card bg-white/10 backdrop-blur rounded-xl p-4 text-center">
+                <div class="agent-avatar mx-auto mb-3">👔</div>
+                <h3 class="text-white font-bold mb-2">CEO</h3>
+                <p class="text-blue-100 text-sm">制定戰略決策<br>優化服務質量</p>
+            </div>
+
+            <!-- Security Chief -->
+            <div class="card bg-white/10 backdrop-blur rounded-xl p-4 text-center">
+                <div class="agent-avatar mx-auto mb-3">👮</div>
+                <h3 class="text-white font-bold mb-2">保安主管</h3>
+                <p class="text-blue-100 text-sm">優化巡邏流程<br>人手調配</p>
+            </div>
+
+            <!-- Data Analyst -->
+            <div class="card bg-white/10 backdrop-blur rounded-xl p-4 text-center">
+                <div class="agent-avatar mx-auto mb-3">📊</div>
+                <h3 class="text-white font-bold mb-2">數據分析師</h3>
+                <p class="text-blue-100 text-sm">GPS 數據分析<br>異常識別</p>
+            </div>
+
+            <!-- Customer Service -->
+            <div class="card bg-white/10 backdrop-blur rounded-xl p-4 text-center">
+                <div class="agent-avatar mx-auto mb-3">📞</div>
+                <h3 class="text-white font-bold mb-2">客服經理</h3>
+                <p class="text-blue-100 text-sm">客戶回應<br>信任建立</p>
+            </div>
+
+            <!-- Secretary -->
+            <div class="agent-avatar mx-auto mb-3">✍️</div>
+            <div class="card bg-white/10 backdrop-blur rounded-xl p-4 text-center">
+                <h3 class="text-white font-bold mb-2">文書秘書</h3>
+                <p class="text-blue-100 text-sm">整合報告<br>專業格式</p>
+            </div>
+        </div>
+
+        <!-- Report Preview -->
+        <div class="report-section">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 flex items-center">
+                <span class="mr-3">📄</span>
+                月度保安報告摘要 (2026 年 4 月)
+            </h2>
+
+            <!-- Key Metrics -->
+            <div class="grid md:grid-cols-3 gap-4 mb-6">
+                <div class="bg-gradient-to-r from-green-500 to-green-600 rounded-xl p-4 text-white">
+                    <div class="text-3xl font-bold mb-2">94.6%</div>
+                    <div class="text-sm opacity-90">整體出勤率</div>
                 </div>
-
-                <!-- Security Chief -->
-                <div class="agent-card bg-gradient-to-br from-blue-900 to-purple-900 rounded-2xl p-6 border border-blue-500/30">
-                    <div class="text-4xl mb-3">👮</div>
-                    <h3 class="text-xl font-bold mb-2">保安主管</h3>
-                    <p class="text-sm text-gray-400 mb-3">Security Operations Chief</p>
-                    <div class="text-sm text-gray-300 space-y-2">
-                        <p>✓ 優化保安巡邏流程</p>
-                        <p>✓ 確保員工工作效率</p>
-                        <p>✓ 分析 GPS Check-in 數據</p>
-                    </div>
+                <div class="bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl p-4 text-white">
+                    <div class="text-3xl font-bold mb-2">5 名</div>
+                    <div class="text-sm opacity-90">AI Agent 協作</div>
                 </div>
-
-                <!-- Data Analyst -->
-                <div class="agent-card bg-gradient-to-br from-blue-900 to-purple-900 rounded-2xl p-6 border border-blue-500/30">
-                    <div class="text-4xl mb-3">📊</div>
-                    <h3 class="text-xl font-bold mb-2">數據分析師</h3>
-                    <p class="text-sm text-gray-400 mb-3">Data Analyst</p>
-                    <div class="text-sm text-gray-300 space-y-2">
-                        <p>✓ 分析 GPS Check-in 數據</p>
-                        <p>✓ 提供洞察建議</p>
-                        <p>✓ 發現異常模式</p>
-                    </div>
+                <div class="bg-gradient-to-r from-purple-500 to-purple-600 rounded-xl p-4 text-white">
+                    <div class="text-3xl font-bold mb-2">6 次</div>
+                    <div class="text-sm opacity-90">異常記錄分析</div>
                 </div>
+            </div>
 
-                <!-- Customer Service -->
-                <div class="agent-card bg-gradient-to-br from-blue-900 to-purple-900 rounded-2xl p-6 border border-blue-500/30">
-                    <div class="text-4xl mb-3">💁</div>
-                    <h3 class="text-xl font-bold mb-2">客服經理</h3>
-                    <p class="text-sm text-gray-400 mb-3">Customer Service Manager</p>
-                    <div class="text-sm text-gray-300 space-y-2">
-                        <p>✓ 處理客戶查詢</p>
-                        <p>✓ 提升客戶滿意度</p>
-                        <p>✓ 專業回應模板</p>
+            <!-- Employee Performance -->
+            <div class="mb-6">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">📊 員工表現排名</h3>
+                <div class="space-y-3">
+                    <div class="flex items-center p-3 bg-green-50 rounded-lg">
+                        <span class="text-2xl mr-3">🥇</span>
+                        <div class="flex-1">
+                            <div class="font-bold text-gray-800">Sarah Lau</div>
+                            <div class="text-sm text-gray-600">出勤率 100% · 0 異常</div>
+                        </div>
+                        <span class="text-green-600 font-bold">優秀</span>
                     </div>
-                </div>
-
-                <!-- Secretary -->
-                <div class="agent-card bg-gradient-to-br from-blue-900 to-purple-900 rounded-2xl p-6 border border-blue-500/30">
-                    <div class="text-4xl mb-3">📝</div>
-                    <h3 class="text-xl font-bold mb-2">文書秘書</h3>
-                    <p class="text-sm text-gray-400 mb-3">Executive Secretary</p>
-                    <div class="text-sm text-gray-300 space-y-2">
-                        <p>✓ 撰寫專業報告</p>
-                        <p>✓ 整理會議記錄</p>
-                        <p>✓ 整合所有分析</p>
+                    <div class="flex items-center p-3 bg-blue-50 rounded-lg">
+                        <span class="text-2xl mr-3">🥈</span>
+                        <div class="flex-1">
+                            <div class="font-bold text-gray-800">John Chan</div>
+                            <div class="text-sm text-gray-600">出勤率 98% · 0 異常</div>
+                        </div>
+                        <span class="text-blue-600 font-bold">良好</span>
                     </div>
-                </div>
-
-                <!-- You -->
-                <div class="agent-card bg-gradient-to-br from-green-900 to-blue-900 rounded-2xl p-6 border border-green-500/30 pulse">
-                    <div class="text-4xl mb-3">👤</div>
-                    <h3 class="text-xl font-bold mb-2">你 (人類)</h3>
-                    <p class="text-sm text-gray-400 mb-3">Team Supervisor</p>
-                    <div class="text-sm text-gray-300 space-y-2">
-                        <p>✓ 監督 AI 團隊</p>
-                        <p>✓ 最終決策權</p>
-                        <p>✓ 審批報告</p>
+                    <div class="flex items-center p-3 bg-yellow-50 rounded-lg">
+                        <span class="text-2xl mr-3">🥉</span>
+                        <div class="flex-1">
+                            <div class="font-bold text-gray-800">Mary Wong</div>
+                            <div class="text-sm text-gray-600">出勤率 95% · 1 異常</div>
+                        </div>
+                        <span class="text-yellow-600 font-bold">需改善</span>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Task Flow -->
-    <section class="py-12 px-4">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-8">📋 工作流程</h2>
-            
-            <div class="task-flow space-y-8">
-                <!-- Task 1 -->
-                <div class="task-item bg-gray-800/50 rounded-xl p-6 border border-gray-700">
-                    <div class="task-dot"></div>
-                    <div class="ml-12">
-                        <div class="flex items-center mb-3">
-                            <span class="text-2xl mr-3">📊</span>
-                            <h3 class="text-xl font-bold">任務 1: 數據分析</h3>
-                        </div>
-                        <p class="text-gray-400 mb-3">負責：數據分析師</p>
-                        <div class="bg-gray-900/50 rounded-lg p-4 text-sm text-gray-300">
-                            <p class="mb-2"><strong>輸入：</strong>GPS Check-in 數據（5 名員工嘅打卡記錄）</p>
-                            <p><strong>輸出：</strong>出勤率統計、異常類型分佈、改善建議</p>
-                        </div>
+            <!-- Key Recommendations -->
+            <div class="mb-6">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">💡 核心建議</h3>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="p-4 bg-blue-50 rounded-lg">
+                        <h4 class="font-bold text-blue-800 mb-2">🔄 巡邏路線優化</h4>
+                        <ul class="text-sm text-gray-700 space-y-1">
+                            <li>• 交替方向巡邏法 (A↔B)</li>
+                            <li>• Building A 分 3 區監控</li>
+                            <li>• 強制打卡點設置</li>
+                        </ul>
                     </div>
-                </div>
-
-                <!-- Task 2 -->
-                <div class="task-item bg-gray-800/50 rounded-xl p-6 border border-gray-700">
-                    <div class="task-dot"></div>
-                    <div class="ml-12">
-                        <div class="flex items-center mb-3">
-                            <span class="text-2xl mr-3">👮</span>
-                            <h3 class="text-xl font-bold">任務 2: 流程優化</h3>
-                        </div>
-                        <p class="text-gray-400 mb-3">負責：保安主管</p>
-                        <div class="bg-gray-900/50 rounded-lg p-4 text-sm text-gray-300">
-                            <p class="mb-2"><strong>輸入：</strong>數據分析結果</p>
-                            <p><strong>輸出：</strong>新巡邏路線、人手調配表、考勤管理建議</p>
-                        </div>
+                    <div class="p-4 bg-green-50 rounded-lg">
+                        <h4 class="font-bold text-green-800 mb-2">👥 人手精準調配</h4>
+                        <ul class="text-sm text-gray-700 space-y-1">
+                            <li>• Sarah → Building A (高難)</li>
+                            <li>• David → Building C (易監控)</li>
+                            <li>• Peter → 機動支援</li>
+                        </ul>
                     </div>
-                </div>
-
-                <!-- Task 3 -->
-                <div class="task-item bg-gray-800/50 rounded-xl p-6 border border-gray-700">
-                    <div class="task-dot"></div>
-                    <div class="ml-12">
-                        <div class="flex items-center mb-3">
-                            <span class="text-2xl mr-3">💁</span>
-                            <h3 class="text-xl font-bold">任務 3: 客戶回應</h3>
-                        </div>
-                        <p class="text-gray-400 mb-3">負責：客服經理</p>
-                        <div class="bg-gray-900/50 rounded-lg p-4 text-sm text-gray-300">
-                            <p class="mb-2"><strong>輸入：</strong>常見客戶查詢</p>
-                            <p><strong>輸出：</strong>專業回應模板、GPS 系統優勢說明</p>
-                        </div>
+                    <div class="p-4 bg-purple-50 rounded-lg">
+                        <h4 class="font-bold text-purple-800 mb-2">🔧 技術升級</h4>
+                        <ul class="text-sm text-gray-700 space-y-1">
+                            <li>• GPS 圍欄 (完成檢查點先可下班)</li>
+                            <li>• 停留警報 (>15 分鐘通知)</li>
+                        </ul>
                     </div>
-                </div>
-
-                <!-- Task 4 -->
-                <div class="task-item bg-gray-800/50 rounded-xl p-6 border border-gray-700">
-                    <div class="task-dot"></div>
-                    <div class="ml-12">
-                        <div class="flex items-center mb-3">
-                            <span class="text-2xl mr-3">📝</span>
-                            <h3 class="text-xl font-bold">任務 4: 月度報告</h3>
-                        </div>
-                        <p class="text-gray-400 mb-3">負責：文書秘書</p>
-                        <div class="bg-gray-900/50 rounded-lg p-4 text-sm text-gray-300">
-                            <p class="mb-2"><strong>輸入：</strong>所有分析同建議</p>
-                            <p><strong>輸出：</strong>完整月度保安報告（800-1000 字）</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Final -->
-                <div class="task-item bg-gradient-to-r from-green-900/50 to-blue-900/50 rounded-xl p-6 border border-green-500/30">
-                    <div class="task-dot" style="background: #10B981;"></div>
-                    <div class="ml-12">
-                        <div class="flex items-center mb-3">
-                            <span class="text-2xl mr-3">✅</span>
-                            <h3 class="text-xl font-bold">最終交付</h3>
-                        </div>
-                        <p class="text-gray-400 mb-3">審批：你 (人類 Supervisor)</p>
-                        <div class="bg-gray-900/50 rounded-lg p-4 text-sm text-gray-300">
-                            <p><strong>交付物：</strong>《Toyo Security 月度保安報告》</p>
-                            <p class="mt-2 text-green-400">✓ 執行摘要</p>
-                            <p class="text-green-400">✓ 數據分析結果</p>
-                            <p class="text-green-400">✓ 優化建議</p>
-                            <p class="text-green-400">✓ 行動計劃</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sample Output -->
-    <section class="py-12 px-4">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-8">📄 示例報告摘要</h2>
-            
-            <div class="bg-gray-800/50 rounded-2xl p-8 border border-gray-700">
-                <h3 class="text-2xl font-bold mb-4">《Toyo Security 月度保安報告》</h3>
-                <p class="text-gray-400 mb-6">2026 年 4 月</p>
-                
-                <div class="space-y-6 text-gray-300">
-                    <div>
-                        <h4 class="font-bold text-white mb-2">📊 執行摘要</h4>
-                        <p>本月 GPS Check-in 系統顯示整體出勤率為 94.6%，較上月提升 2.3%。發現主要問題為個別員工遲到及早退，建議實施新巡邏路線同考勤管理措施。</p>
-                    </div>
-                    
-                    <div>
-                        <h4 class="font-bold text-white mb-2">📈 關鍵數據</h4>
-                        <div class="grid grid-cols-3 gap-4">
-                            <div class="bg-gray-900/50 rounded-lg p-3 text-center">
-                                <div class="text-2xl font-bold text-blue-400">94.6%</div>
-                                <div class="text-xs text-gray-400">平均出勤率</div>
-                            </div>
-                            <div class="bg-gray-900/50 rounded-lg p-3 text-center">
-                                <div class="text-2xl font-bold text-green-400">6 次</div>
-                                <div class="text-xs text-gray-400">異常記錄</div>
-                            </div>
-                            <div class="bg-gray-900/50 rounded-lg p-3 text-center">
-                                <div class="text-2xl font-bold text-purple-400">100%</div>
-                                <div class="text-xs text-gray-400">Sarah 出勤</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <h4 class="font-bold text-white mb-2">💡 主要建議</h4>
-                        <ul class="space-y-2">
-                            <li class="flex items-start">
-                                <span class="text-green-400 mr-2">✓</span>
-                                <span>重新分配巡邏路線，減少 David Ip 嘅工作壓力</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-green-400 mr-2">✓</span>
-                                <span>為 Mary Wong 提供時間管理培訓</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-green-400 mr-2">✓</span>
-                                <span>實施 GPS 實時監控，提升客戶信心</span>
-                            </li>
+                    <div class="p-4 bg-orange-50 rounded-lg">
+                        <h4 class="font-bold text-orange-800 mb-2">📞 客戶服務</h4>
+                        <ul class="text-sm text-gray-700 space-y-1">
+                            <li>• 月度巡邏報告</li>
+                            <li>• 數據透明化</li>
+                            <li>• 信任建立話術</li>
                         </ul>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Benefits -->
-    <section class="py-12 px-4">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-8">✨ AI 團隊優勢</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-gray-800/50 rounded-xl p-6 border border-gray-700">
-                    <div class="text-3xl mb-3">⚡</div>
-                    <h3 class="text-xl font-bold mb-2">快速生成</h3>
-                    <p class="text-gray-400">5 分鐘內完成原本需要 2 小時嘅報告撰寫工作</p>
-                </div>
-                
-                <div class="bg-gray-800/50 rounded-xl p-6 border border-gray-700">
-                    <div class="text-3xl mb-3">💰</div>
-                    <h3 class="text-xl font-bold mb-2">降低成本</h3>
-                    <p class="text-gray-400">相當於 0.5 個全職文員，但 24/7 隨時待命</p>
-                </div>
-                
-                <div class="bg-gray-800/50 rounded-xl p-6 border border-gray-700">
-                    <div class="text-3xl mb-3">📊</div>
-                    <h3 class="text-xl font-bold mb-2">數據驅動</h3>
-                    <p class="text-gray-400">所有建議基於實際 GPS 數據，唔係憑感覺</p>
+            <!-- Action Plan -->
+            <div>
+                <h3 class="text-xl font-bold text-gray-800 mb-4">📋 5 月行動計劃</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm">
+                        <thead>
+                            <tr class="bg-gray-100">
+                                <th class="p-3 text-left">行動項目</th>
+                                <th class="p-3 text-left">負責人</th>
+                                <th class="p-3 text-left">預期目標</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b">
+                                <td class="p-3 font-bold">績效面談</td>
+                                <td class="p-3">Security Chief</td>
+                                <td class="p-3">出勤率 → 95%</td>
+                            </tr>
+                            <tr class="border-b bg-blue-50">
+                                <td class="p-3 font-bold">GPS 圍欄升級</td>
+                                <td class="p-3">IT/Ops</td>
+                                <td class="p-3">杜絕早退</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="p-3 font-bold">優良出勤獎</td>
+                                <td class="p-3">行政部</td>
+                                <td class="p-3">正向文化</td>
+                            </tr>
+                            <tr class="border-b bg-blue-50">
+                                <td class="p-3 font-bold">客戶報告發送</td>
+                                <td class="p-3">客服經理</td>
+                                <td class="p-3">提升滿意度</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-bold">每週路徑審核</td>
+                                <td class="p-3">Security Chief</td>
+                                <td class="p-3">100% 覆蓋</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="py-12 px-4 border-t border-gray-800">
-        <div class="max-w-4xl mx-auto text-center text-gray-400">
-            <p class="mb-4">🤖 Toyo Security AI Team Demo</p>
-            <p class="text-sm">使用 CrewAI 框架創建 · 5 個 AI 員工 · 4 個自動化任務</p>
-            <div class="mt-6 flex justify-center gap-4">
-                <a href="gps-checkin-demo.html" class="text-blue-400 hover:underline">📱 GPS Demo</a>
-                <a href="gps-checkin-pitch-deck.html" class="text-blue-400 hover:underline">📊 Pitch Deck</a>
-                <a href="mailto:iamrogerli@lookfor.hk" class="text-blue-400 hover:underline">📧 聯絡</a>
+        <!-- Technical Info -->
+        <div class="bg-white/10 backdrop-blur rounded-xl p-6 mt-8">
+            <h3 class="text-xl font-bold text-white mb-4">🔧 技術配置</h3>
+            <div class="grid md:grid-cols-2 gap-4 text-white/90">
+                <div>
+                    <div class="font-bold mb-2">框架：</div>
+                    <div class="font-mono bg-black/20 px-3 py-2 rounded">CrewAI + LiteLLM</div>
+                </div>
+                <div>
+                    <div class="font-bold mb-2">模型：</div>
+                    <div class="font-mono bg-black/20 px-3 py-2 rounded">gemma4:31b-cloud</div>
+                </div>
+                <div>
+                    <div class="font-bold mb-2">API：</div>
+                    <div class="font-mono bg-black/20 px-3 py-2 rounded">Ollama Cloud</div>
+                </div>
+                <div>
+                    <div class="font-bold mb-2">語言：</div>
+                    <div class="font-mono bg-black/20 px-3 py-2 rounded">廣東話</div>
+                </div>
             </div>
         </div>
-    </footer>
+
+        <!-- Footer -->
+        <div class="text-center mt-8 text-white/60 text-sm">
+            <p>Generated by CrewAI + LiteLLM + Ollama Cloud</p>
+            <p class="mt-2">Toyo Security AI Team Demo</p>
+        </div>
+    </div>
 </body>
 </html>
